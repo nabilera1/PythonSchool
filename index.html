@@ -3,64 +3,186 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>이완이의 포트폴리오</title>
+    <title>정보 수업에 오신 것을 환영합니다!</title>
     <style>
-        /* 간단한 디자인 설정 */
-        body { font-family: 'Pretendard', sans-serif; line-height: 1.6; margin: 0; padding: 0; color: #333; }
-        header { background: #2d3436; color: white; padding: 3rem 1rem; text-align: center; }
-        section { max-width: 800px; margin: 2rem auto; padding: 0 1rem; }
-        h1 { margin: 0; font-size: 2.5rem; }
-        h2 { border-bottom: 2px solid #2d3436; padding-bottom: 0.5rem; color: #2d3436; }
-        .project-card { background: #f4f4f4; padding: 1rem; margin-bottom: 1rem; border-radius: 8px; border-left: 5px solid #0984e3; }
-        .skills span { background: #0984e3; color: white; padding: 0.3rem 0.6rem; border-radius: 5px; font-size: 0.9rem; margin-right: 5px; }
-        footer { text-align: center; padding: 2rem; background: #eee; font-size: 0.9rem; }
-        a { color: #0984e3; text-decoration: none; }
+        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+        body {
+            font-family: 'Pretendard', sans-serif;
+            background-color: #ffffff; /* 아주 깔끔한 흰색 배경 */
+            color: #333;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* 위쪽 큰 제목 부분 (헤더) */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 36px;
+        }
+        header p {
+            font-size: 18px;
+            opacity: 0.9;
+            margin-top: 10px;
+        }
+
+        /* 전체 내용을 담는 상자 */
+        .container {
+            max-width: 900px;
+            margin: -30px auto 40px;
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08); /* 부드럽게 떠 있는 느낌 */
+        }
+
+        /* 목차 링크 버튼들 */
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #555;
+            background: #f8f9fa;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease; /* 마우스 올렸을 때 부드럽게 변하는 효과 */
+            border: 1px solid #eee;
+        }
+        .nav-links a:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-3px); /* 살짝 위로 떠오르는 효과 */
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        /* 각 섹션 꾸미기 */
+        .section {
+            margin-bottom: 50px;
+        }
+        .section h2 {
+            color: #2c3e50;
+            font-size: 24px;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        /* 수행평가 카드 디자인 */
+        .card-container {
+            display: flex;
+            gap: 20px;
+        }
+        .card {
+            flex: 1;
+            background: #fdfdfd;
+            border: 1px solid #eaeaea;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+        .card h3 {
+            color: #764ba2;
+            margin-top: 0;
+        }
+
+        /* 교사 소개 부분 */
+        .teacher-profile {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: #f4f7f6;
+            padding: 30px;
+            border-radius: 12px;
+        }
+        .teacher-icon {
+            font-size: 60px;
+        }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>안녕하세요, 이완입니다! 👋</h1>
-        <p>열정적인 개발자 지망생의 포트폴리오입니다.</p>
+        <h1>디지털 세상을 디자인하다, 정보 클래스</h1>
+        <p>세상의 문제를 해결하는 창의적인 아이디어, 여기서 시작됩니다.</p>
     </header>
 
-    <section id="about">
-        <h2>소개</h2>
-        <p>저는 새로운 기술을 배우고 문제를 해결하는 과정을 즐깁니다. 깃허브를 통해 저의 성장 기록을 남기고 있습니다.</p>
-    </section>
-
-    <section id="skills">
-        <h2>사용 기술</h2>
-        <div class="skills">
-            <span>HTML/CSS</span>
-            <span>JavaScript</span>
-            <span>Git</span>
-            <span>Python</span>
+    <div class="container">
+        <div class="nav-links">
+            <a href="#">1. 컴퓨팅 시스템</a>
+            <a href="#">2. 데이터</a>
+            <a href="#">3. 알고리즘과 프로그래밍</a>
+            <a href="#">4. 인공지능</a>
+            <a href="#">5. 디지털 문화</a>
         </div>
-    </section>
 
-    <section id="projects">
-        <h2>프로젝트</h2>
-        <div class="project-card">
-            <h3>🚀 나만의 첫 웹사이트</h3>
-            <p>GitHub Pages를 이용해 만든 첫 번째 포트폴리오 사이트입니다.</p>
-            <a href="#">상세 보기 (링크가 있다면 넣으세요)</a>
+        <div class="section">
+            <h2>정보 교과 소개</h2>
+            <p>스마트폰, 인공지능, 자율주행 자동차... 우리가 매일 누리는 편리한 세상의 배경에는 모두 '정보' 기술이 숨어있습니다. 우리 수업에서는 단순히 컴퓨터를 다루는 법을 넘어, <strong>기술을 활용해 우리 주변의 문제를 창의적으로 해결하는 방법</strong>을 배웁니다. 즐거운 실습과 협력으로 미래 사회의 주인공이 되어 봅시다!</p>
         </div>
-        <div class="project-card">
-            <h3>📂 진행 중인 프로젝트</h3>
-            <p>여기에 이완이가 앞으로 만들 멋진 프로젝트 설명이 들어갈 거예요.</p>
-        </div>
-    </section>
 
-    <section id="contact">
-        <h2>연락처</h2>
-        <p>📧 이메일: email@example.com</p>
-        <p>🔗 깃허브: <a href="https://github.com/이완아이디">github.com/이완아이디</a></p>
-    </section>
+        <div class="section">
+            <h2>수행평가 미리보기</h2>
+            <p>우리 수업은 시험 문제만 푸는 것이 아니라, 직접 만들어보며 배웁니다. 이번 학기 가장 중요한 두 가지 활동을 소개합니다.</p>
+
+            <div class="card-container">
+                <div class="card">
+                    <h3>① 나만의 문제 해결 프로그램 만들기</h3>
+                    <p><strong>내용:</strong> 파이썬 코딩을 활용해서 나의 일상생활이나 학교 생활을 편리하게 만들어줄 작은 프로그램을 직접 설계하고 개발해 봅니다.</p>
+                    <p><strong>목표:</strong> 논리적으로 생각하는 힘을 기르고, 코딩이 진짜 세상에서 어떻게 쓰이는지 경험합니다.</p>
+                </div>
+                <div class="card">
+                    <h3>② 우리 동네 데이터 분석과 인공지능</h3>
+                    <p><strong>내용:</strong> 인터넷에 있는 다양한 자료(데이터)를 모아 분석하고, 간단한 인공지능 모델을 활용해 환경이나 교통 같은 사회 문제를 해결할 아이디어를 제안합니다.</p>
+                    <p><strong>목표:</strong> 데이터를 꿰뚫어 보는 눈을 기르고, 인공지능의 원리와 올바른 사용법을 익힙니다.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>소개</h2>
+            <div class="teacher-profile">
+                <div class="teacher-icon">👋</div>
+                <div>
+                    <h3 style="margin-top: 0; color: #2c3e50;">김동균 선생님</h3>
+                    <p>"어려운 컴퓨터 용어는 빼고, 아주 쉽고 친근하게 알려줄게! 실패해도 괜찮아. 오류를 고쳐나가는 과정 자체가 엄청난 배움이니까. 1년 동안 나랑 같이 신나게 상상하고 만들어보자!"</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+        <div class="section">
+            <h2>연락처</h2>
+            <p>이메일: nabilera1@naver.com</p>
+            <p>🔗 깃허브: <a href="https://github.com/nabilera1">github.com/nabilera1</a></p>
+            <p>🔗 블로그: <a href="https://blog.naver.com/nabilera1">blog.naver.com/nabilera1</a></p>
+
+        </section>
+    </div>
+
+    </div>
+
+
 
     <footer>
-        <p>&copy; 2026 이완. All rights reserved.</p>
+        <p>&copy; 2026 김동균. All rights reserved.</p>
     </footer>
+
+
+
 
 </body>
 </html>

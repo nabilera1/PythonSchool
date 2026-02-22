@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Algorithm Lab</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-slate-900 text-slate-200 font-sans antialiased">
+
+    <header class="py-10 text-center border-b border-slate-800 bg-slate-900/50 backdrop-blur-md sticky top-0 z-50">
+        <h1 class="text-4xl font-extrabold bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">
+            Python Algorithm Lab
+        </h1>
+        <p class="mt-2 text-slate-400">파이썬으로 배우는 기초 알고리즘과 퀴즈</p>
+    </header>
+
+    <main class="max-w-4xl mx-auto p-6 space-y-12">
+
+        <section class="space-y-4">
+            <div class="flex items-center space-x-2">
+                <span class="p-2 bg-indigo-500/20 text-indigo-400 rounded-lg">
+                    <i class="fas fa-code"></i>
+                </span>
+                <h2 class="text-2xl font-bold">1. 거품 정렬 (Bubble Sort)</h2>
+            </div>
+            <p class="text-slate-400 leading-relaxed">
+                거품 정렬은 인접한 두 원소를 비교하여 조건에 맞지 않으면 자리를 바꾸는 과정을 반복하는 간단한 정렬 알고리즘입니다.
+                시간 복잡도는 $O(n^2)$으로 다소 느리지만 구조가 직관적입니다.
+            </p>
+
+            <div class="bg-slate-800 rounded-xl p-5 border border-slate-700 shadow-xl">
+                <pre class="text-sm font-mono text-indigo-300"><code>def bubble_sort(arr):
+    n = len(arr)
+    for i in range(n):
+        for j in range(0, n - i - 1):
+            if arr[j] > arr[j + 1]:
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+    return arr</code></pre>
+            </div>
+        </section>
+
+
+
+        <section class="space-y-6">
+            <div class="flex items-center space-x-2">
+                <span class="p-2 bg-emerald-500/20 text-emerald-400 rounded-lg">
+                    <i class="fas fa-question-circle"></i>
+                </span>
+                <h2 class="text-2xl font-bold">Python Algorithm Quiz</h2>
+            </div>
+
+            <div class="grid gap-6">
+                <div class="bg-slate-800/50 p-6 rounded-2xl border border-slate-700 hover:border-indigo-500 transition-all group">
+                    <h3 class="font-semibold text-lg mb-3 group-hover:text-indigo-400">Q1. 거품 정렬의 평균 시간 복잡도는 무엇일까요?</h3>
+                    <div class="space-y-2">
+                        <label class="block p-3 bg-slate-900 rounded-lg cursor-pointer hover:bg-slate-700">A) $O(n)$</label>
+                        <label class="block p-3 bg-slate-900 rounded-lg cursor-pointer hover:bg-slate-700">B) $O(n \log n)$</label>
+                        <label class="block p-3 bg-slate-900 rounded-lg border border-indigo-500/50 text-indigo-300">C) $O(n^2)$</label>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800/50 p-6 rounded-2xl border border-slate-700 hover:border-indigo-500 transition-all group">
+                    <h3 class="font-semibold text-lg mb-3 group-hover:text-indigo-400">Q2. 리스트 `a = [1, 2, 3]`에서 `a.pop(0)`의 결과는?</h3>
+                    <div class="space-y-2 text-slate-400 italic">
+                        <p>힌트: pop()은 인덱스를 인자로 받아 해당 요소를 제거하고 반환합니다.</p>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800/50 p-6 rounded-2xl border border-slate-700 hover:border-indigo-500 transition-all group">
+                    <h3 class="font-semibold text-lg mb-3 group-hover:text-indigo-400">Q3. `range(1, 10, 2)`가 생성하는 숫자의 마지막 값은?</h3>
+                    <p class="text-slate-500 text-sm">정답을 생각해보세요!</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="py-10 text-center text-slate-500 text-sm">
+        <p>&copy; 2026 Python Learning Hub. Created with Tailwind CSS</p>
+    </footer>
+
+</body>
+</html>

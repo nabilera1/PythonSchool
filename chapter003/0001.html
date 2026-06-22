@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>파이썬, 질문으로 마스터하기</title>
+    <title>파이썬, 질문으로 마스터하기 - 1장</title>
     <style>
         /* 기본 밝고 깔끔한 테마 설정 */
         body {
@@ -23,6 +23,8 @@
             min-height: 100vh;
             padding: 40px 20px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
         }
 
         h1 {
@@ -38,6 +40,7 @@
             display: flex;
             flex-direction: column;
             gap: 20px;
+            flex-grow: 1; /* 네비게이션을 하단으로 밀어냄 */
         }
 
         .bubble {
@@ -73,6 +76,76 @@
             border-bottom-left-radius: 4px;
             display: none; /* 클릭 전에는 숨김 */
             opacity: 0;
+            width: 85%; /* 선생님 답변은 내용이 많으므로 좀 더 넓게 설정 */
+        }
+
+        /* 커리큘럼 박스 디자인 */
+        .curriculum-box {
+            background-color: #ffffff;
+            border: 2px dashed #93c5fd;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 15px;
+            font-size: 15px;
+        }
+
+        .curriculum-box h3 {
+            color: #2563eb;
+            margin-top: 0;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+
+        .curriculum-box h4 {
+            color: #475569;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 5px;
+        }
+
+        .curriculum-box ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin: 0;
+        }
+
+        .curriculum-box li {
+            padding: 10px 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .curriculum-box li:last-child {
+            border-bottom: none;
+        }
+
+        .week-badge {
+            display: inline-block;
+            background-color: #bfdbfe;
+            color: #1e3a8a;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 13px;
+            font-weight: bold;
+            margin-right: 10px;
+            min-width: 60px;
+            text-align: center;
+        }
+
+        /* 강조 텍스트 */
+        .highlight {
+            color: #e11d48;
+            font-weight: bold;
+        }
+
+        /* 코드 강조 스타일 */
+        code {
+            background-color: #e2e8f0;
+            color: #e11d48;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
         }
 
         /* 애니메이션 효과용 클래스 */
@@ -92,39 +165,93 @@
             font-size: 14px;
             margin-bottom: 20px;
         }
+
+        /* 페이지 이동 네비게이션 스타일 */
+        .page-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #f1f5f9;
+        }
+
+        .btn-nav {
+            text-decoration: none;
+            background-color: #f1f5f9;
+            color: #475569;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: background-color 0.2s;
+            text-align: center;
+        }
+
+        .btn-nav:hover {
+            background-color: #e2e8f0;
+            color: #0f172a;
+        }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <h1>1장: 파이썬, 넌 누구니?</h1>
-        <p class="guide-text">학생의 말풍선을 클릭하면 선생님의 답변이 나타납니다.</p>
+        <h1>1장: 파이썬과 15주의 여정</h1>
+        <p class="guide-text">학생의 말풍선을 순서대로 클릭하며 대화를 진행해 보세요!</p>
 
         <div class="chat-wrap">
             <div class="bubble student" onclick="revealAnswer('ans1')">
-                "선생님! 파이썬이 대체 뭔가요? 뱀 이름 아닌가요? 이걸로 게임도 만들 수 있어요?"
+                "선생님! 파이썬이 대체 뭔가요? 이걸 배우면 저도 해커나 게임 개발자가 될 수 있나요?"
             </div>
 
             <div class="bubble teacher" id="ans1">
-                "하하, 맞아요! 원래 '파이썬'은 큰 뱀을 뜻하는 단어지만, 우리가 배울 파이썬은 컴퓨터와 대화하기 위한 언어란다.
-                사람들끼리 한국어나 영어를 쓰듯이, 컴퓨터에게 '이것 좀 계산해 줘!', '화면에 캐릭터를 그려줘!'라고 명령을 내릴 때 쓰는 아주 쉽고 강력한 언어지.
-                당연히 게임도 만들 수 있고, 인공지능도 만들 수 있단다!"
+                "하하, 좋은 질문이야! 파이썬은 <strong>컴퓨터와 대화하기 위한 아주 쉬운 언어</strong>란다.
+                다른 언어들이 복잡한 암호 같다면, 파이썬은 영어 문장을 쓰는 것처럼 자연스럽지.
+                이걸 배우면 게임은 물론이고, 웹사이트도 만들고, 요즘 유행하는 인공지능도 다룰 수 있는 기초 체력이 생겨!"
             </div>
 
             <div class="bubble student" onclick="revealAnswer('ans2')">
-                "우와! 그런데 왜 하필 파이썬을 배워야 하나요? 다른 언어도 많잖아요."
+                "오, 재밌겠네요! 그럼 이번 학기 동안 구체적으로 어떤 것들을 배우나요? 일주일에 3시간씩이나 들었는데, 다 끝나면 전 뭘 할 수 있게 되죠?"
             </div>
 
             <div class="bubble teacher" id="ans2">
-                "좋은 질문이야! 파이썬의 가장 큰 장점은 '사람의 생각하는 방식'과 아주 비슷하다는 거야.
-                다른 언어들이 복잡한 암호를 푸는 느낌이라면, 파이썬은 그냥 영어 문장을 읽고 쓰는 것처럼 자연스럽지.
-                그래서 초보자들이 문법에 얽매이지 않고 '어떤 프로그램을 만들까?'하는 아이디어에 집중할 수 있게 해준단다."
+                "우리 수업의 최종 목표는 단순한 '코딩 시험'이 아니야. 너희 스스로 일상의 불편함을 해결하는 <strong><span class="highlight">나만의 프로그램</span></strong>을 만들고, <strong><span class="highlight">데이터와 인공지능</span></strong>을 활용해 사회 문제를 분석하는 멋진 프로젝트를 완성하게 될 거란다. 자, 15주 동안의 탐험 지도를 보여줄게!"
+
+                <div class="curriculum-box">
+                    <h3>🗺️ 정보 수업 15주 탐험 지도 (주 3차시)</h3>
+
+                    <h4>[3단원] 알고리즘과 프로그래밍</h4>
+                    <ul>
+                        <li><span class="week-badge">1~5주차</span> <strong>파이썬과 친해지기:</strong> 변수, 조건문, 반복문, 함수 (컴퓨터에게 똑똑하게 일 시키는 법 배우기)</li>
+                        <li><span class="week-badge">6~8주차</span> <strong>데이터 다루기 달인:</strong> 리스트, 딕셔너리, 문자열 (엄청나게 많은 정보를 깔끔하게 정리하는 마법)</li>
+                        <li><span class="week-badge">9~10주차</span> <strong>[수행평가①]</strong> 나의 일상을 바꾸는 <strong>'나만의 문제 해결 프로그램'</strong> 직접 기획하고 개발하기</li>
+                    </ul>
+
+                    <h4>[4단원] 인공지능</h4>
+                    <ul>
+                        <li><span class="week-badge">11~12주차</span> <strong>데이터 분석가 되기:</strong> 공공 데이터 수집 및 시각화 (숫자 속에 숨겨진 의미를 그래프로 찾아내기)</li>
+                        <li><span class="week-badge">13~14주차</span> <strong>[수행평가②]</strong> <strong>'우리 동네 데이터 분석과 인공지능'</strong> 모델 활용해 사회 문제 해결 아이디어 제안하기</li>
+                        <li><span class="week-badge">15주차</span> <strong>세상에 자랑하기:</strong> 최종 프로젝트 발표 및 피드백 파티 🎉</li>
+                    </ul>
+                </div>
             </div>
+
+            <div class="bubble student" onclick="revealAnswer('ans3')">
+                "우와... 데이터 분석에 인공지능까지요? 3단원에서 프로그램을 직접 만들고 4단원에서 인공지능까지 배운다니 기대돼요! 근데 코딩은 처음이라 너무 어려울 것 같아요. ㅠㅠ"
+            </div>
+
+            <div class="bubble teacher" id="ans3">
+                "전혀 걱정하지 마! 선생님이 컴퓨터가 데이터를 어떻게 기억하는지 아주 기초적인 것부터 차근차근, 친구와 대화하듯이 알려줄 거야. 오류가 나면 같이 고치면 되고!
+                중요한 건 완벽한 코드가 아니라 <strong>문제를 해결하려는 논리적인 생각(컴퓨팅 사고력)</strong>이란다. 자, 그럼 첫 번째 마법 주문을 외우러 가볼까?"
+            </div>
+        </div>
+
+        <div class="page-nav">
+            <a href="../index.html" class="btn-nav">🏠 맨 첫 페이지 가기</a>
+            <a href="0002.html" class="btn-nav">2장: 컴퓨터에게 기억력 선물하기 →</a>
         </div>
     </div>
 
     <script>
-        // 학생 말풍선 클릭 시 답변을 보여주는 자바스크립트 함수
         function revealAnswer(id) {
             const answerElement = document.getElementById(id);
             if (answerElement) {

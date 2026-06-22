@@ -1,0 +1,19 @@
+# 1. 파이참(PyCharm) 개인 설정 파일
+.idea/
+
+# 2. 파이썬(Python) 임시 및 캐시 파일
+__pycache__/
+*.py[cod]
+*$py.class
+
+# 3. 가상환경 (Virtual Environment)
+venv/
+env/
+.venv/
+
+# 4. 환경변수 및 비밀키 (보안)
+.env
+
+# 5. 운영체제(OS) 찌꺼기 파일
+.DS_Store
+Thumbs.db

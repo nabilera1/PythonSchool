@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>파이썬, 질문으로 마스터하기 - 2장</title>
+    <style>
+        /* 기본 밝고 깔끔한 테마 설정 (1장과 동일) */
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            background-color: #ffffff;
+            min-height: 100vh;
+            padding: 40px 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            border-bottom: 2px solid #e0e7ff;
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+        }
+
+        /* 채팅 UI 레이아웃 */
+        .chat-wrap {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            flex-grow: 1; /* 네비게이션 버튼을 하단으로 밀어내기 위함 */
+        }
+
+        .bubble {
+            max-width: 75%;
+            padding: 15px 20px;
+            border-radius: 20px;
+            line-height: 1.6;
+            font-size: 16px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        /* 학생 질문 (오른쪽, 밝은 파란색) */
+        .student {
+            align-self: flex-end;
+            background-color: #e0f2fe;
+            color: #0369a1;
+            border-bottom-right-radius: 4px;
+            cursor: pointer;
+        }
+
+        .student:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        /* 선생님 답변 (왼쪽, 부드러운 회색/흰색, 처음엔 숨김) */
+        .teacher {
+            align-self: flex-start;
+            background-color: #f8fafc;
+            color: #334155;
+            border: 1px solid #e2e8f0;
+            border-bottom-left-radius: 4px;
+            display: none; /* 클릭 전에는 숨김 */
+            opacity: 0;
+        }
+
+        /* 코드 강조 스타일 */
+        code {
+            background-color: #e2e8f0;
+            color: #e11d48;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+        }
+
+        /* 애니메이션 효과용 클래스 */
+        .show-answer {
+            display: block;
+            animation: fadeIn 0.5s forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .guide-text {
+            text-align: center;
+            color: #94a3b8;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        /* 페이지 이동 네비게이션 스타일 (새로 추가됨) */
+        .page-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #f1f5f9;
+        }
+
+        .btn-nav {
+            text-decoration: none;
+            background-color: #f1f5f9;
+            color: #475569;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: background-color 0.2s;
+        }
+
+        .btn-nav:hover {
+            background-color: #e2e8f0;
+            color: #0f172a;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>2장: 컴퓨터에게 기억력 선물하기</h1>
+        <p class="guide-text">학생의 말풍선을 클릭하면 선생님의 답변이 나타납니다.</p>
+
+        <div class="chat-wrap">
+            <!-- 첫 번째 대화 -->
+            <div class="bubble student" onclick="revealAnswer('ans1')">
+                "선생님, 파이썬이 사람 생각하는 거랑 비슷하다고 하셨잖아요. 그럼 제가 '내 이름은 홍길동이야'라고 하면 컴퓨터가 제 이름을 기억하게 할 수도 있나요?"
+            </div>
+
+            <div class="bubble teacher" id="ans1">
+                "물론이지! 그때 사용하는 마법의 상자가 바로 <strong>'변수(Variable)'</strong>란다. 파이썬에게 <code>name = '홍길동'</code> 이라고 적어주면, 'name'이라는 이름표가 붙은 상자에 '홍길동'이라는 글자를 쏙 넣어두고 컴퓨터가 영원히 기억하게 할 수 있어."
+            </div>
+
+            <!-- 두 번째 대화 -->
+            <div class="bubble student" onclick="revealAnswer('ans2')">
+                "우와, 상자에 이름표를 붙이는 거군요! 그럼 그 상자에는 글자 말고 숫자도 넣을 수 있나요? 제 나이 같은 거요!"
+            </div>
+
+            <div class="bubble teacher" id="ans2">
+                "아주 예리한 질문이야! 맞아, 숫자도 넣을 수 있어. <code>age = 18</code>처럼 쓰면 되지. 파이썬은 똑똑해서 상자에 들어간 게 글자(문자열)인지, 숫자(정수)인지 스스로 알아챈단다. 딱 하나 주의할 점은 글자를 넣을 땐 <strong>따옴표('')</strong>를 꼭 씌워줘야 한다는 것만 기억해!"
+            </div>
+
+            <!-- 세 번째 대화 -->
+            <div class="bubble student" onclick="revealAnswer('ans3')">
+                "그럼 상자 이름표, 그러니까 '변수 이름'은 제 마음대로 아무렇게나 지어도 상관없나요?"
+            </div>
+
+            <div class="bubble teacher" id="ans3">
+                "마음대로 지어도 되지만, 컴퓨터가 헷갈리지 않게 몇 가지 작은 규칙이 있어! 띄어쓰기를 하면 안 되고, 숫자로 시작해서도 안 돼. 그리고 나중에 네가 짠 코드를 다시 볼 때 이해하기 쉽도록, <code>a</code>나 <code>b</code>보다는 <code>my_name</code>이나 <code>score</code>처럼 <strong>의미를 알기 쉬운 영어</strong>로 짓는 것을 추천한단다."
+            </div>
+        </div>
+
+        <!-- 하단 네비게이션 버튼 -->
+        <div class="page-nav">
+            <!-- index.html 은 1장 파일 이름입니다 -->
+            <a href="0001.html" class="btn-nav">← 1장으로 돌아가기</a>
+            <!-- 3장 파일은 나중에 chapter3.html 로 만들 예정입니다 -->
+            <a href="chapter3.html" class="btn-nav">3장: 조건문 배우기 →</a>
+        </div>
+    </div>
+
+    <script>
+        // 학생 말풍선 클릭 시 답변을 보여주는 자바스크립트 함수
+        function revealAnswer(id) {
+            const answerElement = document.getElementById(id);
+            if (answerElement) {
+                answerElement.classList.add('show-answer');
+            }
+        }
+    </script>
+</body>
+</html>

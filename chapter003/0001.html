@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>파이썬, 질문으로 마스터하기</title>
+    <style>
+        /* 기본 밝고 깔끔한 테마 설정 */
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            background-color: #ffffff;
+            min-height: 100vh;
+            padding: 40px 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            border-bottom: 2px solid #e0e7ff;
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+        }
+
+        /* 채팅 UI 레이아웃 */
+        .chat-wrap {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .bubble {
+            max-width: 75%;
+            padding: 15px 20px;
+            border-radius: 20px;
+            line-height: 1.6;
+            font-size: 16px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        /* 학생 질문 (오른쪽, 밝은 파란색) */
+        .student {
+            align-self: flex-end;
+            background-color: #e0f2fe;
+            color: #0369a1;
+            border-bottom-right-radius: 4px;
+            cursor: pointer;
+        }
+
+        .student:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        /* 선생님 답변 (왼쪽, 부드러운 회색/흰색, 처음엔 숨김) */
+        .teacher {
+            align-self: flex-start;
+            background-color: #f8fafc;
+            color: #334155;
+            border: 1px solid #e2e8f0;
+            border-bottom-left-radius: 4px;
+            display: none; /* 클릭 전에는 숨김 */
+            opacity: 0;
+        }
+
+        /* 애니메이션 효과용 클래스 */
+        .show-answer {
+            display: block;
+            animation: fadeIn 0.5s forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .guide-text {
+            text-align: center;
+            color: #94a3b8;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>1장: 파이썬, 넌 누구니?</h1>
+        <p class="guide-text">학생의 말풍선을 클릭하면 선생님의 답변이 나타납니다.</p>
+
+        <div class="chat-wrap">
+            <div class="bubble student" onclick="revealAnswer('ans1')">
+                "선생님! 파이썬이 대체 뭔가요? 뱀 이름 아닌가요? 이걸로 게임도 만들 수 있어요?"
+            </div>
+
+            <div class="bubble teacher" id="ans1">
+                "하하, 맞아요! 원래 '파이썬'은 큰 뱀을 뜻하는 단어지만, 우리가 배울 파이썬은 컴퓨터와 대화하기 위한 언어란다.
+                사람들끼리 한국어나 영어를 쓰듯이, 컴퓨터에게 '이것 좀 계산해 줘!', '화면에 캐릭터를 그려줘!'라고 명령을 내릴 때 쓰는 아주 쉽고 강력한 언어지.
+                당연히 게임도 만들 수 있고, 인공지능도 만들 수 있단다!"
+            </div>
+
+            <div class="bubble student" onclick="revealAnswer('ans2')">
+                "우와! 그런데 왜 하필 파이썬을 배워야 하나요? 다른 언어도 많잖아요."
+            </div>
+
+            <div class="bubble teacher" id="ans2">
+                "좋은 질문이야! 파이썬의 가장 큰 장점은 '사람의 생각하는 방식'과 아주 비슷하다는 거야.
+                다른 언어들이 복잡한 암호를 푸는 느낌이라면, 파이썬은 그냥 영어 문장을 읽고 쓰는 것처럼 자연스럽지.
+                그래서 초보자들이 문법에 얽매이지 않고 '어떤 프로그램을 만들까?'하는 아이디어에 집중할 수 있게 해준단다."
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 학생 말풍선 클릭 시 답변을 보여주는 자바스크립트 함수
+        function revealAnswer(id) {
+            const answerElement = document.getElementById(id);
+            if (answerElement) {
+                answerElement.classList.add('show-answer');
+            }
+        }
+    </script>
+</body>
+</html>
